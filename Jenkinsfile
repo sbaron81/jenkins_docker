@@ -9,6 +9,11 @@ pipeline {
                 sh 'docker build -t my-docker-whale -f Dockerfile .'
             }
         }
+        stage('Docker clean') {
+                steps {
+                    sh(returnStdout: true, script: 'docker container rm -f my-whale')
+                }
+        }
         stage('Docker run') {
             steps {
                 sh 'docker run --name my-whale my-docker-whale'
