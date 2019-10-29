@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Docker clean') {
                 steps {
-                    sh(returnStdout: true, script: 'docker container rm -f my-whale')
+                    sh(returnStdout: true, script: 'docker container rm -f my-whale || echo Ok')
                 }
         }
         stage('Docker run') {
