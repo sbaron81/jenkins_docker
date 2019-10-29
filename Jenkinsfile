@@ -11,7 +11,8 @@ pipeline {
         }
         stage('Docker run') {
             steps {
-                sh 'echo docker run'
+                sh 'docker container ls | grep my-whale && docker container rm -f my-whale'
+                sh 'docker run --name my-whale my-docker-whale'
             }
         }
     }
